@@ -1,0 +1,79 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+                {
+            "label": "RELEASE: 1 ==> queue",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": ["RELEASE queue config", "Build"]
+        },
+        {
+            "label": "DEBUG: 1 ==> queue",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": ["DEBUG queue config", "Build"]
+        },
+        {
+            "label": "RELEASE queue config",
+            "type": "shell",
+            "command": [
+                "rm -rf ${workspaceRoot}/build &&",
+                "mkdir ${workspaceRoot}/build &&",
+                "cd ${workspaceRoot}/build &&",
+                "cmake ..",
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "Compile"
+            }
+        },
+        {
+            "label": "DEBUG queue config",
+            "type": "shell",
+            "command": [
+                "rm -rf ${workspaceRoot}/build &&",
+                "mkdir ${workspaceRoot}/build &&",
+                "cd ${workspaceRoot}/build &&",
+                "cmake ..",
+                "-DCMAKE_BUILD_TYPE=Debug"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "Compile"
+            }
+        },
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "time nice --adjustment=5 cmake --build ${workspaceRoot}/build --verbose --parallel 20",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "Compile"
+            }
+        }
+    ]
+}
