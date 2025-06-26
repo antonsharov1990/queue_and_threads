@@ -1,0 +1,10 @@
+[Bb]uild
+[Bb]in
+[Oo]bj
+cmake-*
+.idea
+*.log
+*.depend
+*.layout
+*.bin
+libs/out

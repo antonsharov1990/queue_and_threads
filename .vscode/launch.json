@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "[Release] queue",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/build/_app_queue.exec",
+            "cwd": "${workspaceRoot}/build/",
+            "args": ["./../source"],
+            "presentation": {
+                "hidden": false,
+                "group": "[1] Release",
+                "order": 1
+            },
+            "preLaunchTask": "Release: 1 ==> queue",
+            "stopAtEntry": true,
+            "environment": []
+        },
+        {
+            "name": "[Debug] queue",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/build/_app_queue.exec",
+            "cwd": "${workspaceRoot}/build/",
+            "args": ["./../source"],
+            "presentation": {
+                "hidden": false,
+                "group": "[1] DEBUG",
+                "order": 1
+            },
+            "preLaunchTask": "DEBUG: 1 ==> queue",
+            "stopAtEntry": true,
+            "environment": []
+        }
+    ]
+}
